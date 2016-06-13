@@ -23,6 +23,10 @@ npm install
 cdスペースフィンダーからフォルダをドラッグアンドドロップ
 例：cd /Users/hogehoge/Desktop/gulp
 --------------------------------------------------
+・Gitでのバージョン管理について
+node_modulesフォルダ管理外とします。
+.gitignoreファイルにnode_modules/と記述してください。
+--------------------------------------------------
 ・Folder
 htmlフォルダが最終的な納品物フォルダ（npm run-script releaseを実行すると作成されます。）
 develop-htmlフォルダが開発フォルダ
