@@ -79,68 +79,34 @@ combineMqの使用方法
 Sassをコンパイルすると、自動で動作する。
 例：
 「Sass」
-h1 {
-  font-size: 1.6em;
-  @media screen and (min-width: 600px) {
-    font-size: 1.8em;
-  }
-  @media screen and (min-width: 960px) {
-    font-size: 2em;
-  }
-  @media screen and (min-width: 1240px) {
-    font-size: 3em;
+h1{
+  background: red;
+  @include mq(sp){
+    background: orange;
   }
 }
-
-h2 {
-  font-size: 1.4em;
-  @media screen and (min-width: 600px) {
-    font-size: 1.6em;
-  }
-  @media screen and (min-width: 960px) {
-    font-size: 1.7em;
-  }
-  @media screen and (min-width: 1240px) {
-    font-size: 2.6em;
+h2{
+  background: black;
+  @include mq(sp){
+    background: green;
   }
 }
 
 「CSS」
 h1 {
-  font-size: 1.6em;
+  background: red;
 }
 
 h2 {
-  font-size: 1.4em;
+  background: black;
 }
-
-@media screen and (min-width: 600px) {
+@media screen and (max-width: 768px) {
   h1 {
-    font-size: 1.8em;
+    background: orange;
   }
 
   h2 {
-    font-size: 1.6em;
-  }
-}
-
-@media screen and (min-width: 960px) {
-  h1 {
-    font-size: 2em;
-  }
-
-  h2 {
-    font-size: 1.7em;
-  }
-}
-
-@media screen and (min-width: 1240px) {
-  h1 {
-    font-size: 3em;
-  }
-
-  h2 {
-    font-size: 2.6em;
+    background: green;
   }
 }
 
