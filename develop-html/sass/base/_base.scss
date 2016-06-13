@@ -1,0 +1,27 @@
+html {
+	font-size: 14px;
+}
+
+
+body {
+	font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+}
+
+a {}
+a:hover {}
+
+
+
+
+
+
+
+
+
+@media screen and (max-width:480px) {
+	img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+}
