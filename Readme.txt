@@ -24,8 +24,10 @@ cdスペースフィンダーからフォルダをドラッグアンドドロッ
 例：cd /Users/hogehoge/Desktop/gulp
 --------------------------------------------------
 ・Gitでのバージョン管理について
-node_modulesフォルダ管理外とします。
-.gitignoreファイルにnode_modules/と記述してください。
+node_modulesフォルダは管理外とします。
+グローバルのgitignoreファイルにnode_modules/と記述してください。
+グローバルのgitignoreファイルの場所は/User/username/.gitignore_globalです。
+不可視ファイルなので、可視化できるようにしてください。
 --------------------------------------------------
 ・Folder
 htmlフォルダが最終的な納品物フォルダ（npm run-script releaseを実行すると作成されます。）
