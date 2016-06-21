@@ -37,7 +37,6 @@ develop-htmlフォルダが開発フォルダ
 plumber     ：Sass等のコンパイルエラーが起きてもwatchを継続させる
 ejs         ：htmlテンプレートエンジン
 sass        ：sassのコンパイル
-spritesmith ：cssスプライトの作成
 autoprefixer：cssにプレフィックスを自動付与
 browserSync ：ライブリロード
 combineMq   ：複数箇所のメディアクエリを一つにまとめる
@@ -50,18 +49,6 @@ notify      ：エラーを知らせる
 動作させた後は、ターミナルを触る必要はありません。
 ターミナルを終了させる場合は、ctrl + c 押して、
 exitでターミナルが終了する。
-
-cssスプライトの使用方法
-gulpを動作させる前にspriteフォルダの中にフォルダを作成。
-フォルダ名は後に使用したい画像名にする。
-gulpを起動させて、作成したフォルダの中に一度に画像を入れる。
-imageフォルダの中にスプライトした画像が「~~~.png」の名前で作成される。
-@include sprite(¥¥¥¥);という風にscssに記述すれば使用できる。
-¥¥¥¥の部分は吐き出されたscssを確認し、$¥¥¥¥-nameというのが複数個
-記述されているので、使用したい画像の名前を使用する。
-例：bg-title.pngとbg-txt.pngをaaaというフォルダに入れてスプライトすると、
-/sass/module/の中にaaa.scssができている。その中に、$bg-title-nameと$bg-txt-nameがあるので、
-bg-title.pngを表示したければ、@include sprite($bg-title);と記述する。
 
 ejsの使用方法
 「~~~.ejs」は「~~~.html」にコンパイルされる。

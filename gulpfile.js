@@ -13,9 +13,6 @@ var gulp = require('gulp'),
 ・developは開発フォルダ
 ・afterCompileEjsはコンパイルしたhtmlファイルが
 吐き出される場所（gulpfile.jsからの相対パスで記述）を示す。
-・spriteMixinはspriteイメージを使用するためのミックスインが吐き出される場所。
-・spriteはspriteしたい画像を入れるフォルダ。
-・imageはspriteイメージが吐き出される場所。
 ・ejsDirはコンパイルしたいejsファイルがある場所。
 ・templateDirはテンプレートejsファイルがある場所。
 ・sassCompileはsassファイルがある場所。
