@@ -3,7 +3,6 @@ var gulp = require('gulp'),
     plumber = require('gulp-plumber'),
     ejs = require("gulp-ejs"),
     sass = require('gulp-sass'),
-    spritesmith = require('gulp.spritesmith'),
     autoprefixer = require('gulp-autoprefixer'),
     browserSync = require('browser-sync'),
     combineMq = require('gulp-combine-mq');
@@ -23,17 +22,15 @@ var gulp = require('gulp'),
 ・afterCompileSassはコンパイル後のcssファイルがある場所。
 *******************************************************/
 //Deliverables Folder
-var deliverables = "./html/";
+var deliverables = "html/";
 //Folder to develop 
-var develop = "./develop-html/";
+var develop = "develop-html/";
 //config
 var config = {
    "path" : {
       "sassCompile" : develop+"sass/**/*.scss",
+      "sassModule" : develop+"sass/**/_*.scss",
       "afterCompileSass" : develop+"css/",
-      "spriteMixin" : develop+"sass/module/",
-      "sprite"    : develop+"sprite",
-      "image"     : develop+"image",
       "ejsDir"    : develop+"ejs/**/*.ejs",
       "templateDir": develop+"ejs/templates/_*.ejs",
       "afterCompileEjs": develop
@@ -45,7 +42,6 @@ release = {
     "css": deliverables+"css/",
     "js": deliverables+"js/",
     "html": deliverables,
-    "image": deliverables+"image/",
   }
 }
 
@@ -74,25 +70,9 @@ gulp.task('default',function(){
     .pipe(gulp.dest(config.path.afterCompileEjs));
   });
 
-  //sprite画像の作成
-  //フォルダをwatch前に作成しておき、watchの後に画像を追加
-  gulp.watch([config.path.sprite+'/**/*.png'],function(event){
-      var spriteFilePath = event.path.match(/^(.+\/)(.+?)(\/.+?\..+?)$/);
-      var spriteData = gulp.src([spriteFilePath[1]+spriteFilePath[2]+'/*.png'])
-      .pipe(plumber({
-        errorHandler: notify.onError('Error: <%= error.message %>')
-      }))
-      .pipe(spritesmith({
-        imgName: '../image/' + spriteFilePath[2]+'.png',
-        cssName: '_'+spriteFilePath[2]+'.scss'
-      }));
-      spriteData.img.pipe(gulp.dest(config.path.image));
-      spriteData.css.pipe(gulp.dest(config.path.spriteMixin));
-  });
-
   //sassファイルのコンパイルとプレフィックスの付与
   gulp.task('SASS',function(){
-    gulp.src(config.path.sassCompile)
+    gulp.src([config.path.sassCompile,'!'+config.path.sassModule])
     .pipe(plumber({
       errorHandler: notify.onError('Error: <%= error.message %>')
     }))
