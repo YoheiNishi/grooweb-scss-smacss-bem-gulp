@@ -83,12 +83,10 @@
 			if(wid <= breakPoint){
 //////////////////// sp Only /////////////////
                 spSizeOnly();
-                changeImgSp();
 
 			}else if(wid > breakPoint){
 //////////////////// pc Only /////////////////
                 pcSizeOnly();
-                changeImgPc();
 			}
 		}
 
@@ -102,7 +100,7 @@
 //
 //////////////////////////////////////////////
         function pcSizeOnly(){
-
+            changeImgPc();
         }
 
 
@@ -117,7 +115,7 @@
 //
 //////////////////////////////////////////////
         function spSizeOnly(){
-
+            changeImgSp();
         }
 
 
