@@ -26,16 +26,13 @@
 -------------------------------*/
 .sp-only {
 	display: none !important;
+	@include mq(sp){
+		display: block !important;
+	}
 }
 .pc-only {
 	display: block !important;
-}
-
-@media screen and (max-width:640px) {
-	.sp-only {
-		display: block !important;
-	}
-	.pc-only {
+	@include mq(sp){
 		display: none !important;
 	}
 }
