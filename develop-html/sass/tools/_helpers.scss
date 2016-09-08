@@ -26,13 +26,13 @@
 -------------------------------*/
 .sp-only {
 	display: none !important;
-	@include mq(sp){
+	@include mq(sp) {
 		display: block !important;
 	}
 }
 .pc-only {
 	display: block !important;
-	@include mq(sp){
+	@include mq(sp) {
 		display: none !important;
 	}
 }
