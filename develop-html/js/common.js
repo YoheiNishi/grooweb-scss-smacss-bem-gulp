@@ -4,7 +4,8 @@
 		breakPoint = 667,
 		wid = $window.width(),
 		resizeTimer = false,
-		$body = $('body');
+		$body = $('body'),
+		afterLoad = false;
 
 
 //////////////////////////////////////////////
@@ -116,10 +117,26 @@
 
 
 
+//////////////////////////////////////////////
+//
+//   lazy load
+//
+//////////////////////////////////////////////
+		var loadTimer = false;
+		function lazyLoad(device){
+			clearTimeout(loadTimer);
+			if(afterLoad){
+				if(device === 'pc'){
 
-
-
-
+				}else{
+					
+				}
+			}else{
+				loadTimer = setTimeout(function(){
+					lazyLoad(device);
+				},500);
+			}
+		}
 
 //////////////////////////////////////////////
 //
