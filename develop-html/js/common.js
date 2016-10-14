@@ -59,12 +59,12 @@
 //////////////////////////////////////////////
 		function changeImgSp(){
 			$('.change-img').each(function(){
-				$(this).attr("src",$(this).attr("src").replace(/_pc./, '_sp.'));
+				$(this).attr("src",$(this).attr("src").replace(/_pc\./, '_sp.'));
 			});
 		}
 		function changeImgPc(){
 			$('.change-img').each(function(){
-				$(this).attr("src",$(this).attr("src").replace(/_sp./, '_pc.'));
+				$(this).attr("src",$(this).attr("src").replace(/_sp\./, '_pc.'));
 			});
 		}
 
@@ -129,7 +129,7 @@
 				if(device === 'pc'){
 
 				}else{
-					
+
 				}
 			}else{
 				loadTimer = setTimeout(function(){
