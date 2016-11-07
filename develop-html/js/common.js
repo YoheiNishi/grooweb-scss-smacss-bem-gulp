@@ -5,7 +5,7 @@
 		wid = $window.width(),
 		resizeTimer = false,
 		$body = $('body'),
-		afterLoad = false;
+		CLICK_EVENT = 'click';
 
 
 //////////////////////////////////////////////
@@ -36,22 +36,20 @@
 			// PC only
 		}
 
+
 //////////////////////////////////////////////
 //
-//   All device
+//   click or touch
 //
 //////////////////////////////////////////////
-		//// fade ////
-		$(".fade").hover(function(){
-			$(this).fadeTo(100, 0.6);
-		},function(){
-			$(this).fadeTo(300, 1.0);
-		});
-
-		descriminateBp();
-
-
-
+function tapEvent(){
+	if ('ontouchstart' in window ? true : false){
+		CLICK_EVENT = 'touchstart';
+	}else{
+		CLICK_EVENT = 'click';
+	}
+}
+tapEvent();
 //////////////////////////////////////////////
 //
 //   change Img
@@ -116,27 +114,19 @@
 
 
 
-
 //////////////////////////////////////////////
 //
-//   lazy load
+//   All device
 //
 //////////////////////////////////////////////
-		var loadTimer = false;
-		function lazyLoad(device){
-			clearTimeout(loadTimer);
-			if(afterLoad){
-				if(device === 'pc'){
+		//// fade ////
+		$(".fade").hover(function(){
+			$(this).fadeTo(100, 0.6);
+		},function(){
+			$(this).fadeTo(300, 1.0);
+		});
 
-				}else{
-
-				}
-			}else{
-				loadTimer = setTimeout(function(){
-					lazyLoad(device);
-				},500);
-			}
-		}
+		descriminateBp();
 
 //////////////////////////////////////////////
 //
