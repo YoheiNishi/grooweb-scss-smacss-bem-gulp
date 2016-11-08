@@ -66,7 +66,45 @@ tapEvent();
 			});
 		}
 
-
+//////////////////////////////////////////////
+//
+//   ページ内リンク
+//
+//////////////////////////////////////////////
+var pageLink = {
+	init: function () {
+		this.setParam();
+		this.bindEvent();
+	},
+	setParam: function(){
+		this.$link = $('.anc');
+		this.target = [];
+		if(this.$link.length > 0){
+			this.setPosition();
+		}
+	},
+	bindEvent: function(){
+		var self = this;
+		this.$link.click(function(){
+			self.scrollAnime(self.$link.index(this));
+			return false;
+		});
+		$window.resize(function(){
+			if(this.$link.length > 0){
+				this.setPosition();
+			}
+		});
+	},
+	scrollAnime: function(index){
+		var self = this;
+		$('document,body').animate({'scrollTop':self.target[index]},450,'swing');
+	},
+	setPosition: function(){
+		for (var i = 0; i < this.$link.length; i++) {
+			this.target[i] = $(this.$link.attr('href')).offset().top;
+		}
+	}
+};
 //////////////////////////////////////////////
 //
 //   Break Point Discriminate
