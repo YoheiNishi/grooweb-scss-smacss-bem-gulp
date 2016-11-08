@@ -85,7 +85,7 @@ var pageLink = {
 	},
 	bindEvent: function(){
 		var self = this;
-		this.$link.click(function(){
+		this.$link.on(CLICK_EVENT,function(){
 			self.scrollAnime(self.$link.index(this));
 			return false;
 		});
@@ -97,7 +97,7 @@ var pageLink = {
 	},
 	scrollAnime: function(index){
 		var self = this;
-		$('document,body').animate({'scrollTop':self.target[index]},450,'swing');
+		$('html,body').animate({'scrollTop':self.target[index]},450,'swing');
 	},
 	setPosition: function(){
 		for (var i = 0; i < this.$link.length; i++) {
