@@ -105,6 +105,37 @@ var pageLink = {
 		}
 	}
 };
+
+
+//////////////////////////////////////////////
+//
+//   Google Map
+//
+//////////////////////////////////////////////
+function initialize() {
+	//目的地
+	var latlng = new google.maps.LatLng(32.828632, 130.770792);
+	var myOptions = {
+		zoom: 15,
+		center: latlng
+	};
+	var map = new google.maps.Map(document.getElementById('map'), myOptions);
+
+	//map アイコン
+	var icon = {
+		url: 'アイコン画像のパス',
+		size: new google.maps.Size(画像の幅,画像の高さ)
+	};
+	var markerOptions = {
+		position: latlng,
+		map: map,
+		icon: icon,
+		title: 'アイコンのタイトル',
+	};
+	var marker = new google.maps.Marker(markerOptions);
+	marker.setMap(map);
+}
+
 //////////////////////////////////////////////
 //
 //   Break Point Discriminate
