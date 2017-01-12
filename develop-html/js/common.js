@@ -90,8 +90,8 @@ var pageLink = {
 			return false;
 		});
 		$window.resize(function(){
-			if(this.$link.length > 0){
-				this.setPosition();
+			if(self.$link.length > 0){
+				self.setPosition();
 			}
 		});
 	},
