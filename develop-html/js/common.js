@@ -106,7 +106,57 @@ var pageLink = {
 	}
 };
 
-
+//////////////////////////////////////////////
+//
+//   slick
+//		下記は例であらかじめエレメントやオプションを記入しています。
+//		エレメントとオプションの順番は関係あります。
+//
+//////////////////////////////////////////////
+var slide = {
+	init: function(){
+		this.setParam();
+		this.bindEvent();
+	},
+	setParam: function(){
+		this.$slides = [$('.footer__business__banner'),$('.class-detail__slide'),$('.pick-up__slide-sp')];
+		this.options = [
+			{
+				autoplay: true,
+				autoplaySpeed: 6000,
+				slidesToShow: 6,
+				responsive:[{
+					breakpoint: 640,
+					settings: {
+						slidesToShow: 2
+					}
+				}]
+			},
+			{
+				autoplay: true,
+				dots: true,
+				slidesToShow: 1,
+				lazyLoad: 'ondemand'
+			},
+			{
+				autoplay: false,
+				infinite: true
+			}
+		];
+		this.$window = $(window);
+	},
+	bindEvent: function(){
+		var self = this;
+		this.$window.load(function(){
+			self.slide();
+		});
+	},
+	slide: function(){
+		for(var i=0;i<this.options.length;i++){
+			this.$slides[i].slick(this.options[i]);
+		}
+	}
+};
 //////////////////////////////////////////////
 //
 //   Google Map
