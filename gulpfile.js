@@ -20,7 +20,7 @@ var gulp = require('gulp'),
 *******************************************************/
 //Deliverables Folder
 var deliverables = "html/";
-//Folder to develop 
+//Folder to develop
 var develop = "develop-html/";
 //config
 var config = {
@@ -33,7 +33,7 @@ var config = {
       "afterCompileEjs": develop
    }
 },
-//Folder to release 
+//Folder to release
 release = {
   "path" : {
     "css": deliverables+"css/",
@@ -47,8 +47,8 @@ gulp.task('default',function(){
   //監視
   gulp.watch([config.path.ejsDir,config.path.templateDir],['EJS']);
   gulp.watch([config.path.sassCompile],['SASS']);
-  gulp.watch([develop+'*.html',develop+'js/*.js'],['RELOAD']);
-  
+  gulp.watch([develop+'**/*.html',develop+'js/*.js'],['RELOAD']);
+
   //サーバー起動
   browserSync({
       server:{
@@ -81,7 +81,7 @@ gulp.task('default',function(){
     .pipe(browserSync.stream());
   });
 
-    
+
 
   //ブラウザの自動リロード
   gulp.task('RELOAD',function(){
