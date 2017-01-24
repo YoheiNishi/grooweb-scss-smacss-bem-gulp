@@ -30,6 +30,7 @@ var config = {
       "afterCompileSass" : develop+"css/",
       "ejsDir"    : develop+"ejs/**/*.ejs",
       "templateDir": develop+"ejs/templates/_*.ejs",
+		"utilDir": develop+"ejs/util/_*.ejs",
       "afterCompileEjs": develop
    }
 },
@@ -59,7 +60,7 @@ gulp.task('default',function(){
 
   //ejsファイルのコンパイル
   gulp.task('EJS',function(){
-    gulp.src([config.path.ejsDir,'!'+config.path.templateDir])
+    gulp.src([config.path.ejsDir,'!'+config.path.templateDir,'!'+config.path.templateDir])
     .pipe(plumber({
       errorHandler: notify.onError('Error: <%= error.message %>')
     }))
