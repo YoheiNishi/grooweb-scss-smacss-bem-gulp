@@ -100,9 +100,12 @@ var pageLink = {
 		$('html,body').animate({'scrollTop':self.target[index]},450,'swing');
 	},
 	setPosition: function(){
-		for (var i = 0; i < this.$link.length; i++) {
-			this.target[i] = $(this.$link.attr('href')).offset().top;
-		}
+		// for (var i = 0; i < this.$link.length; i++) {
+		// 	this.target[i] = $(this.$link.eq(i).attr('href')).offset().top;
+		// }
+		$.each(this.$link,function(index){
+			this.target[index] = $($(this).attr('href')).offset().top;
+		});
 	}
 };
 
