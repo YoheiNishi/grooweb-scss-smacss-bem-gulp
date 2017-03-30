@@ -50,13 +50,42 @@ gulp.task('default',function(){
   gulp.watch([config.path.sassCompile],['SASS']);
   gulp.watch([develop+'**/*.html',develop+'js/*.js'],['RELOAD']);
 
-  //サーバー起動
-  browserSync({
-      server:{
-        baseDir: "./"+develop//ルートとなるディレクトリ
-        //proxy: 'localhost:8888/wordpress'
-      }
-    });
+//サーバー起動
+	browserSync({
+		server:{
+			baseDir: "./"+develop,//ルートとなるディレクトリ
+			//proxy: 'localhost:8888/wordpress'
+			middleware: [
+				function (req, res, next) {
+					// 仮想サーバーへのリクエストのurlが.htmlなら
+					// index.htmlの時は / だけになる
+					if (/\.html$/.test(req.url) || req.url === '/') {
+						// ファイル読み込み
+						var absPath='';
+						if(req.url === '/'){
+							absPath = path.join(__dirname, "/"+develop,'/index.html' );
+						}else{
+							absPath = path.join(__dirname, "/"+develop, req.url);
+						}
+						var data = fs.readFileSync(absPath);
+						// 文字コード判定
+						var charset = jschardet.detect(data);
+						if (charset.encoding == 'SHIFT_JIS') {
+							// shift-jisなら文字コード変換
+							var source = iconvLite.decode(new Buffer(data, 'binary'), "Shift_JIS");
+							res.setHeader("Content-Type", "text/html; charset=UTF-8");
+							res.end(source);
+						} else {
+							// shift-jis以外
+							next();
+						}
+					} else {
+						next();
+					}
+				}
+			]
+		}
+	});
 
   //ejsファイルのコンパイル
   gulp.task('EJS',function(){
